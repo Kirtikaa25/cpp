@@ -1,5 +1,5 @@
 
-#include<iostream>
+#include<bits/stdc++.h>
 #include<queue>
 #include<vector>
 using namespace std;
