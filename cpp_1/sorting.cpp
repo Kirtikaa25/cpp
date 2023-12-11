@@ -1,8 +1,8 @@
-#include <bits/stdc++.h
+#include <bits/stdc++.h>
 int func(int low,int high,vector<int>& arr){
     int i=low;
     int j=high;
-    while(i<j){
+    while(i<j)
         while(i<high && arr[low]>=arr[i]){
           i++;
         }
