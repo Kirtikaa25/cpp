@@ -1,3 +1,4 @@
+#include<bits/stdc++.h>
 void print(string s,vector<string>& sub){
     int n=s.length();
     int m=1<<n;
