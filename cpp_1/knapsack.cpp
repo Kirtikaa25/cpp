@@ -1,4 +1,4 @@
-int cutRod(vector<int> &price, int n) 
+int cutRod(vector<int> &price, int n){ 
   // Write your code here.
   vector<int> prev(n+1,0);
   for(int i=0;i<=n;i++) prev[i]=i*price[0];
