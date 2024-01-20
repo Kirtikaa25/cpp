@@ -14,5 +14,11 @@ void print(string s,vector<string>& sub){
     }
 }
 int main(){
-    
+    string s;
+    cin>>s;
+    vector<string> sub;
+    print(s,sub);
+    for(auto it:sub){
+        cout<<it<<endl;
+    }
 }
