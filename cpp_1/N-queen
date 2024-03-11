@@ -1,0 +1,55 @@
+bool isSafe(int row,int col,vector<vector<int>> &board,int n){
+    int dupR=row;
+    int dupC=col;
+    //upperdiag
+    while(row>=0 && col>=0){
+        if(board[row][col]==1) return false;
+        row--;
+        col--;
+    }
+    row=dupR;
+    col=dupC;
+    //row
+    while(col>=0){
+        if(board[row][col]==1) return false;
+        col--;
+    }
+    row=dupR;
+    col=dupC;
+    //lower diag
+    while(row<n && col>=0){
+        if(board[row][col]==1) return false;
+        row++;
+        col--;
+    }
+    return true;
+}
+void solve(int col,vector<vector<int>> &ans,vector<int> &temp,int n,vector<int> &rowCheck,vector<int> &lowerDiag,vector<int> &upperDiag){
+   if(col==n){
+       ans.push_back(temp);
+       return;
+   }
+   for(int row=0;row<n;row++){
+       if(rowCheck[row]==0 && lowerDiag[row+col]==0 && upperDiag[n-1+col-row]==0){
+           rowCheck[row]=1;
+           lowerDiag[row+col]=1;
+           upperDiag[n-1+col-row]=1;
+           temp[row*n+col]=1;
+           solve(col+1,ans,temp,n,rowCheck,lowerDiag,upperDiag);
+           rowCheck[row]=0;
+           lowerDiag[row+col]=0;
+           upperDiag[n-1+col-row]=0;
+           temp[row*n+col]=0;
+       }
+   }
+}
+vector<vector<int>> nQueens(int n)
+{
+    // Write your code here.
+    vector<vector<int>> ans;
+    vector<int> temp(n*n);
+    vector<int> rowCheck(n,0),lowerDiag(2*n-1,0),upperDiag(2*n-1,0);
+    solve(0,ans,temp,n,rowCheck,lowerDiag,upperDiag);
+    return ans;
+
+}
