@@ -1,29 +1,4 @@
-bool isSafe(int row,int col,vector<vector<int>> &board,int n){
-    int dupR=row;
-    int dupC=col;
-    //upperdiag
-    while(row>=0 && col>=0){
-        if(board[row][col]==1) return false;
-        row--;
-        col--;
-    }
-    row=dupR;
-    col=dupC;
-    //row
-    while(col>=0){
-        if(board[row][col]==1) return false;
-        col--;
-    }
-    row=dupR;
-    col=dupC;
-    //lower diag
-    while(row<n && col>=0){
-        if(board[row][col]==1) return false;
-        row++;
-        col--;
-    }
-    return true;
-}
+
 void solve(int col,vector<vector<int>> &ans,vector<int> &temp,int n,vector<int> &rowCheck,vector<int> &lowerDiag,vector<int> &upperDiag){
    if(col==n){
        ans.push_back(temp);
